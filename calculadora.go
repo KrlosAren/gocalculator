@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"os"
+	"regexp"
 	"strconv"
 )
 
@@ -49,22 +50,22 @@ func readInput() string {
 	return scanner.Text()
 }
 
-// func main() {
+func Operate() {
 
-// 	values := readInput()
-// 	regex := regexp.MustCompile(`(\d{1,})([+-/*]{1})(\d{1,})`)
+	values := readInput()
+	regex := regexp.MustCompile(`(\d{1,})([+-/*]{1})(\d{1,})`)
 
-// 	if regex.Match([]byte(values)) {
-// 		value1 := regex.ReplaceAllString(values, "$1")
-// 		operator := regex.ReplaceAllString(values, "$2")
-// 		value2 := regex.ReplaceAllString(values, "$3")
-// 		num1 := parser(value1)
-// 		num2 := parser(value2)
+	if regex.Match([]byte(values)) {
+		value1 := regex.ReplaceAllString(values, "$1")
+		operator := regex.ReplaceAllString(values, "$2")
+		value2 := regex.ReplaceAllString(values, "$3")
+		num1 := parser(value1)
+		num2 := parser(value2)
 
-// 		calc := calc{}
-// 		response, _ := calc.operation(num1, num2, operator)
+		calc := calc{}
+		response, _ := calc.operation(num1, num2, operator)
 
-// 		println("El resultado: ", response)
-// 	}
+		println("El resultado: ", response)
+	}
 
-// }
+}
